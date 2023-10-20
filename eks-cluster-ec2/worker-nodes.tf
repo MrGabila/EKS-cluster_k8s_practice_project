@@ -34,7 +34,6 @@ resource "aws_iam_role_policy_attachment" "AmazonEC2ContainerRegistryReadOnly" {
 
 
 ## Configure worker nodes creation 
-
 resource "aws_eks_node_group" "eks_node_group" {
   cluster_name    = var.cluster_name
   node_group_name = "${var.cluster_name}-node_group"
@@ -50,9 +49,6 @@ resource "aws_eks_node_group" "eks_node_group" {
 
   instance_types = ["t2.medium"]
 
-  depends_on = [
-    aws_eks_cluster.cluster
-  ]
-
+  depends_on = [ aws_eks_cluster.cluster]
 
 }
